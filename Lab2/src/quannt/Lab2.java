@@ -9,10 +9,7 @@ import java.util.Scanner;
  * 
  */
 public class Lab2 {
-	public static void main(String[] args) {
-		Bai1();
-		
-	}
+	
 	public static void Bai1() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Nhập a: ");
@@ -69,5 +66,50 @@ public class Lab2 {
                 System.out.println("x2 = " + x2);
             }
         }
+	}
+	public static void Bai3() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập số điện sử dụng trong tháng: ");
+        int soDien = scanner.nextInt();
+
+        int tien;
+        if (soDien <= 50) {
+            tien = soDien * 1000;
+        } else {
+            tien = 50 * 1000 + (soDien - 50) * 1200;
+        }
+
+        System.out.println("Tiền điện phải trả: " + tien + " VNĐ");
+	}
+	public static void Menu() 
+	{
+		System.out.println("+---------------------------------------------------+");
+		System.out.println("1. Giải phương trình bậc nhất");
+		System.out.println("2. Giải phương trình bậc 2");
+		System.out.println("3. Tính tiền điện");
+		System.out.println("4. Kết thúc");
+		System.out.println("+---------------------------------------------------+");
+	}
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int chon;
+		do {
+			Menu();
+			System.out.print("Chọn chức năng:");
+			chon = scanner.nextInt();
+			switch(chon){
+				case 1:Bai1();
+					break;
+				case 2:Bai2();
+					break;
+				case 3:Bai3();
+					break;
+				case 4:System.out.println("Kết thúc");
+					break;
+				default:
+					System.out.println("Không hợp lệ, hãy nhập lại");
+			}
+		}while(chon != 4);
+		scanner.close();
 	}
 }
