@@ -5,126 +5,105 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.JTextArea;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import java.awt.Font;
 
 public class ManHinhChuongTrinhBac2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField textField;
 	private JTextField txtA;
 	private JTextField txtB;
 	private JTextField txtC;
-	private JTextArea txtKetQua;
-
+	private JLabel lblx1;
+	private JLabel lblx2;
 	public ManHinhChuongTrinhBac2() {
 		setTitle("Giải phương trình bậc 2");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 488, 328);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("a:");
+		lblNewLabel.setBounds(36, 51, 21, 14);
+		contentPane.add(lblNewLabel);
+		
 		txtA = new JTextField();
-		txtA.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtA.setBounds(5, 56, 75, 30);
+		txtA.setBounds(67, 48, 160, 20);
 		contentPane.add(txtA);
 		txtA.setColumns(10);
 		
-		txtB = new JTextField();
-		txtB.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtB.setColumns(10);
-		txtB.setBounds(147, 56, 81, 30);
-		contentPane.add(txtB);
-		
-		txtC = new JTextField();
-		txtC.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtC.setColumns(10);
-		txtC.setBounds(265, 56, 81, 30);
-		contentPane.add(txtC);
-		
-		JLabel lblNewLabel = new JLabel("x^2+");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(90, 50, 59, 32);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblX = new JLabel("x+");
-		lblX.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblX.setBounds(238, 53, 29, 27);
-		contentPane.add(lblX);
-		
-		JLabel lblNewLabel_2 = new JLabel("=0");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(350, 61, 45, 19);
-		contentPane.add(lblNewLabel_2);
-		
-		JButton btnNewButton = new JButton("Tính Toán");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PTB2();
-			}
-		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(127, 112, 137, 41);
-		contentPane.add(btnNewButton);
-		
-		JLabel lblNewLabel_1 = new JLabel("Kết quả: ");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(10, 188, 88, 19);
+		JLabel lblNewLabel_1 = new JLabel("b:");
+		lblNewLabel_1.setBounds(36, 82, 21, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		txtKetQua = new JTextArea();
-		txtKetQua.setFont(new Font("Monospaced", Font.PLAIN, 16));
-		txtKetQua.setEditable(false);
-		txtKetQua.setBounds(108, 177, 287, 76);
-		contentPane.add(txtKetQua);
+		txtB = new JTextField();
+		txtB.setBounds(67, 79, 160, 20);
+		contentPane.add(txtB);
+		txtB.setColumns(10);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("c:");
+		lblNewLabel_1_1.setBounds(36, 113, 21, 14);
+		contentPane.add(lblNewLabel_1_1);
+		
+		txtC = new JTextField();
+		txtC.setColumns(10);
+		txtC.setBounds(67, 110, 160, 20);
+		contentPane.add(txtC);
+		
+		JButton btnTinh =  new JButton("Tính");
+		btnTinh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					PTB2();
+				}
+		});
+		btnTinh.setBounds(95, 148, 89, 23);
+		contentPane.add(btnTinh);
+		
+		JLabel lblKetQua = new JLabel("Kết quả:");
+        lblKetQua.setBounds(36, 182, 60, 20);
+        contentPane.add(lblKetQua);
+        
+        lblx1 = new JLabel("x1:");
+        lblx1.setBounds(36, 213, 276, 14);
+        contentPane.add(lblx1);
+        
+        lblx2 = new JLabel("x2:");
+        lblx2.setBounds(36, 238, 160, 14);
+        contentPane.add(lblx2);
+		
+		
 	}
-	 private void PTB2() {
-	        try {
-	            double a = Double.parseDouble(txtA.getText());
-	            double b = Double.parseDouble(txtB.getText());	
-	            double c = Double.parseDouble(txtB.getText());		            
-	            if (a==0) {
-	            	if (b == 0) {
-	           			if (c == 0) {
-	           				txtKetQua.setText("Phương trình có vô số nghiệm");
-	                        } else {
-	                        	txtKetQua.setText("Phương trình vô nghiệm");
-	                        }
-	                    } else {
-	                        double x = -c / b;
-	                        txtKetQua.setText("Phương trình có 1 nghiệm:\n x = " + x);
-	                    }
-	            	}
-	            else {
-	            	double delta = b * b - 4 * a * c;
+	private void PTB2() {
+		try {
+            double a = Double.parseDouble(txtA.getText());
+            double b = Double.parseDouble(txtB.getText());
+            double c = Double.parseDouble(txtC.getText());
 
-	            	if (delta > 0) {
-	                    double root1 = (-b + Math.sqrt(delta)) / (2 * a);
-	                    double root2 = (-b - Math.sqrt(delta)) / (2 * a);
-	                    txtKetQua.setText("Phương trình có 2 nghiệm phân biệt:\nx1 = " + root1 + "\nx2 = " + root2);
-	                } else if (delta == 0) {
-	                    double root = -c / (2 * b);
-	                    txtKetQua.setText("Phương trình có nghiệm kép:\n x = " + root);
-	                } else {
-	                    double realPart = -c / (2 * b);
-	                    double imaginaryPart = Math.sqrt(Math.abs(delta)) / (2 * b);
-	                    txtKetQua.setText("Phương trình có 2 nghiệm ảo: \n x1 = " + realPart + " + i" + imaginaryPart + " \n x2 = " + realPart + " - i" + imaginaryPart);
-	                }
-	            }	            
-	        } catch (NumberFormatException ex) {
-	            txtKetQua.setText("Vui lòng nhập tham số hợp lệ");
-	        }
-	    }
+            double delta = b * b - 4 * a * c;
 
+            if (delta < 0) {
+            	lblx1.setText("Phương trình vô nghiệm");
+                lblx2.setText("");
+            } else if (delta == 0) {
+                double x = -b / (2 * a);
+                lblx1.setText("Phương trình có nghiệm kép x = " + x);
+                lblx2.setText("");
+            } else {
+                double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                double x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                lblx1.setText("x1 = " + x1);
+                lblx2.setText("x2 = " + x2);
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Nhập không hợp lệ!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
